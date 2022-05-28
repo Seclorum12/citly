@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block extra_css %}
+    <link href="{{ url_for('static', filename='css/header.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/hero.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/why-us.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/about.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/faq.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/contact-us.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    {% include 'components/header.html' %}
+    {% include 'components/hero.html' %}
+    <main id="main">
+        {% include 'components/about.html' %}
+        {% include 'components/why-us.html' %}
+        {% include 'components/faq.html' %}
+        {% include 'components/contact-us.html' %}
+    </main>
+    {% include 'components/footer.html' %}
+{% endblock %}
