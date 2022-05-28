@@ -1,3 +1,6 @@
+{% block extra_css %}
+    <link href="{{ url_for('static', filename='css/hero.css') }}" rel="stylesheet">
+{% endblock %}
 <section id="hero">
     <div class="hero-container">
         <h1>Welcome to Citly</h1>
@@ -11,3 +14,6 @@
         </form>
     </div>
 </section>
+{% block extra_js %}
+    <script src="{{ url_for('static', filename='js/link-shortener.js') }}"></script>
+{% endblock %}
