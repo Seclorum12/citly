@@ -62,4 +62,20 @@
     }
   }, true)
 
+
+  on('submit', '#shorten_url_form', async function (e) {
+    e.preventDefault()
+    const errorEl = select('#shorten_url_error')
+    const inputEl = select('#shorten_url_input')
+    const formData = new FormData(e.target)
+    const url = formData.get('url')
+    try {
+      errorEl.textContent = ''
+      const shortUrl = await document.linkShortener.makeShortLink(url)
+      console.log(shortUrl)
+      inputEl.textContent = shortUrl
+    } catch (e) {
+      errorEl.textContent = e
+    }
+  })
 })();

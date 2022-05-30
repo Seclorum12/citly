@@ -7,6 +7,9 @@ name = "pypi"
 flask = "*"
 flask-sqlalchemy = "*"
 python-dotenv = "*"
+pytest = "*"
+flask-restful = "*"
+flask-apispec = "==0.11.0"
 
 [dev-packages]
 

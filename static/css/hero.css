@@ -105,6 +105,13 @@
   margin: 0 8px;
 }
 
+#hero #shorten_url_error {
+  margin: 0;
+  padding: 2px;
+  height: 30px;
+  color: red;
+}
+
 #hero .link-form button[type=submit] {
   font-family: "Raleway", sans-serif;
   font-weight: 500;
