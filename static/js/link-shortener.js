@@ -3,13 +3,13 @@
   document.linkShortener = {}
 
   async function postMakeShortLink(long_url) {
-    const response = await fetch(window.location.origin + '/api/links/make_short_link', {
+    const response = await fetch(window.location.origin + '/api/links/make-short-link', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
       },
       body: JSON.stringify({
-        long_url: long_url
+        link: long_url
       })
     })
     return await response.json()
