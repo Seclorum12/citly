@@ -1,8 +1,10 @@
-from dotenv import dotenv_values
+from os import environ
 
-env = dotenv_values(".env")
+flask_env = environ.get('FLASK_ENV')
 
-if env.get('FLASK_ENV') == 'development':
+if flask_env == 'development':
     from .dev import *
+elif flask_env == 'testing':
+    from .testing import *
 else:
     from .prod import *

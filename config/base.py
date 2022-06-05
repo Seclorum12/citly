@@ -1,6 +1,8 @@
 from pathlib import Path
 
-from . import env
+from dotenv import dotenv_values
+
+env = dotenv_values(".env")
 
 BASE_DIR = Path(__file__).parent.parent.absolute()
 print(f'BASE_DIR is {BASE_DIR}')

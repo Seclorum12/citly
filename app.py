@@ -1,9 +1,10 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+
+import api
 import blueprints
+import db
 import errorhandlers
 import resourses
-import api
 
 # Define the WSGI application object
 app = Flask(__name__)
@@ -12,7 +13,8 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 # DB
-db = SQLAlchemy(app)
+db = db.DB(app)
+db.create_all()
 
 # API
 api = api.API(app)
@@ -20,5 +22,3 @@ resourses.add_all(api)
 
 blueprints.register_all(app)
 errorhandlers.register_all(app)
-
-db.create_all()

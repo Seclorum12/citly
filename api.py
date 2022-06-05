@@ -1,9 +1,10 @@
+from typing import Type
+
+from apispec import APISpec
+from apispec.ext.marshmallow import MarshmallowPlugin
 from flask import Blueprint, Flask
 from flask_apispec import FlaskApiSpec
 from flask_restful import Api
-from apispec import APISpec
-from apispec.ext.marshmallow import MarshmallowPlugin
-from typing import Type
 
 from utils.api import ApiResource
 

@@ -1,6 +1,7 @@
-from marshmallow import Schema, fields, ValidationError
 from urllib.parse import urlparse
+
 from flask import request
+from marshmallow import Schema, fields, ValidationError
 
 
 def validate_link_is_foreign(link):
@@ -9,5 +10,5 @@ def validate_link_is_foreign(link):
         raise ValidationError('Citly url not allowed')
 
 
-class ForeignLinkSchema(Schema):
+class RequestForeignLinkSchema(Schema):
     link = fields.Url(required=True, relative=False, validate=validate_link_is_foreign)
