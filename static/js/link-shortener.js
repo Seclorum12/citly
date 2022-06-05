@@ -17,7 +17,7 @@
 
   async function makeShortLink(long_url) {
     validateUrl(long_url)
-    const respData = await postMakeShortLink(long_url)
+    return await postMakeShortLink(long_url)
   }
 
   function validateUrl(long_url) {

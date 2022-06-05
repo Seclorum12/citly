@@ -30,3 +30,13 @@ class LinksService:
             _attempts += 1
             self.create_random_link(_attempts=_attempts)
         return token
+
+    @staticmethod
+    def follow(generated_link):
+        link = Link.query.filter_by(generated_link=generated_link).first()
+        if not link:
+            return
+        link.follows += 1
+        db.session.add(link)
+        db.session.commit()
+        return link

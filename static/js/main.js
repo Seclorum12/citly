@@ -17,7 +17,8 @@
    * Easy event listener function
    */
   const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
+    let selectEl;
+    (el instanceof HTMLElement) ? selectEl = el : selectEl = select(el, all);
     if (selectEl) {
       if (all) {
         selectEl.forEach(e => e.addEventListener(type, listener))
@@ -62,20 +63,33 @@
     }
   }, true)
 
-
+  const copyUrlBtn = select('#copy_url_btn')
+  const inputEl = select('#shorten_url_input')
   on('submit', '#shorten_url_form', async function (e) {
     e.preventDefault()
     const errorEl = select('#shorten_url_error')
-    const inputEl = select('#shorten_url_input')
+    const submitBtn = select('#shorten_url_btn')
+    const copyUrlBtn = select('#copy_url_btn')
     const formData = new FormData(e.target)
     const url = formData.get('url')
     try {
       errorEl.textContent = ''
       const shortUrl = await document.linkShortener.makeShortLink(url)
-      console.log(shortUrl)
-      inputEl.textContent = shortUrl
+      inputEl.value = shortUrl.short_link
+      submitBtn.classList.add('hidden')
+      copyUrlBtn.classList.remove('hidden')
     } catch (e) {
       errorEl.textContent = e
+    }
+  })
+
+  on('click', copyUrlBtn, function () {
+    inputEl.focus()
+    inputEl.select()
+    try {
+      document.execCommand('copy');
+    } catch {
+      navigator.clipboard.writeText(inputEl.value).then()
     }
   })
 })();

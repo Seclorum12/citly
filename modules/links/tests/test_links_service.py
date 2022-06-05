@@ -39,3 +39,16 @@ class TestCreateRandomLink:
             service.create_random_link()
 
         assert mocked_token_urlsafe.call_count == 21
+
+
+class TestFollow:
+    def test_non_existed_link(self, service):
+        link = service.follow('fake_link')
+        assert not link
+
+    def test_existed_link(self, service, db):
+        link_in_db = LinkFactory.create(follows=0)
+        db.session.commit()
+        link = service.follow(link_in_db.generated_link)
+        assert link
+        assert 1 == link.follows

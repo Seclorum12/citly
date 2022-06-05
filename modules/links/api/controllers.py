@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import jsonify, request
 from flask_apispec import marshal_with, use_kwargs
 
 from utils.api import ApiResource
@@ -18,5 +18,6 @@ class MakeShortLink(ApiResource):
         return jsonify({
             'is_created': is_created,
             'generated_link': link.generated_link,
+            'short_link': f'{request.host_url}{link.generated_link}',
             'follows': link.follows
         })
