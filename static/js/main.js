@@ -70,6 +70,8 @@
     const errorEl = select('#shorten_url_error')
     const submitBtn = select('#shorten_url_btn')
     const copyUrlBtn = select('#copy_url_btn')
+    const followNum = select('#shorten_url_number')
+
     const formData = new FormData(e.target)
     const url = formData.get('url')
     try {
@@ -78,6 +80,10 @@
       inputEl.value = shortUrl.short_link
       submitBtn.classList.add('hidden')
       copyUrlBtn.classList.remove('hidden')
+      if (shortUrl.is_created === false) {
+        followNum.textContent = shortUrl.follows
+        followNum.classList.remove('hidden')
+      }
     } catch (e) {
       errorEl.textContent = e
     }

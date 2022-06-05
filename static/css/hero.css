@@ -130,6 +130,22 @@
   background: #fd8841;
 }
 
+#hero .shorten-input-wrapper {
+  position: relative;
+}
+
+#hero #shorten_url_number {
+  position: absolute;
+  top: 50%;
+  right: -60px;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 9999px;
+  padding: 7px;
+  height: 40px;
+  width: 40px;
+}
+
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;

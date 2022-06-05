@@ -6,8 +6,11 @@
         <h1>Welcome to Citly</h1>
         <h2>Please, fill out the for below field and click "Shorten"</h2>
         <form id="shorten_url_form" method="post" role="form" class="link-form">
-            <input id="shorten_url_input" class="shorten-input" autocomplete="off" name="url" type="text" value=""
-                   placeholder="Shorten your link">
+            <div class="shorten-input-wrapper">
+                <input id="shorten_url_input" class="shorten-input" autocomplete="off" name="url" type="text" value=""
+                       placeholder="Shorten your link">
+                <span id="shorten_url_number" class="hidden"></span>
+            </div>
             <p id="shorten_url_error"></p>
             <div class="text-center">
                 <button id="shorten_url_btn" type="submit">Shorten</button>
